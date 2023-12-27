@@ -413,4 +413,17 @@ public class UiTest {
         notDenialMessage();
         checkNumberPayment(initialNumberPayment, 0);
     }
+
+    @Test
+    @DisplayName("Zero CVC")
+    public void shouldErrorZeroCVC() {
+        long initialNumberPayment = numberFromPayment();
+        var card = choicePaymentCard();
+        card.zeroCVC();
+        sendingRequest.shouldNotBe(Condition.visible);
+        errorFormat.shouldBe(Condition.visible);
+        notPositiveMessage();
+        notDenialMessage();
+        checkNumberPayment(initialNumberPayment, 0);
+    }
 }

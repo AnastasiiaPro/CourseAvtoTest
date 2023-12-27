@@ -260,4 +260,13 @@ public class PaymentCard {
         cardCVC.setValue(Helper.getTwoSymbolsCVC());
         buttonContinue.click();
     }
+
+    public void zeroCVC() {
+        validNumber();
+        validMonth();
+        validYear();
+        validOwner();
+        cardCVC.setValue(Helper.getZeroCVC());
+        buttonContinue.click();
+    }
 }

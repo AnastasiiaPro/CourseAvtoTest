@@ -139,4 +139,8 @@ public class Helper {
     public static String getEmptyCVC() {
         return "";
     }
+
+    public static String getZeroCVC() {
+        return "000";
+    }
 }
