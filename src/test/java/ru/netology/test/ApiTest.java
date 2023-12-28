@@ -189,7 +189,7 @@ public class ApiTest {
                 .when()
                 .post("/api/v1/pay")
                 .then()
-                .statusCode(500);
+                .statusCode(400);
         payment = getPayments();
         credit = SQL.getCreditsRequest();
         order = SQL.getOrders();
