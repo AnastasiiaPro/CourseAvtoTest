@@ -32,7 +32,7 @@ public class Helper {
     public static String getEnOwner() {
         var randomFirstName = fakerEn.name().firstName();
         var randomLastName = fakerEn.name().lastName();
-        return randomFirstName + " " + randomLastName;
+        return randomFirstName.toUpperCase() + " " + randomLastName.toUpperCase();
     }
 
     public static String getCVC() {
@@ -105,11 +105,11 @@ public class Helper {
     public static String getCyrillicOwner() {
         var randomFirstName = fakerRu.name().firstName();
         var randomLastName = fakerRu.name().lastName();
-        return randomFirstName + " " + randomLastName;
+        return randomFirstName.toUpperCase() + " " + randomLastName.toUpperCase();
     }
 
     public static String getOneWordOwner() {
-        return fakerRu.name().firstName();
+        return fakerRu.name().firstName().toUpperCase();
     }
 
     public static String getOneSymbolCVC() {
