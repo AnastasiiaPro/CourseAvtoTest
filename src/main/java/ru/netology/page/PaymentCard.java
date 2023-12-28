@@ -194,7 +194,7 @@ public class PaymentCard {
         validNumber();
         validMonth();
         validYear();
-        cardOwner.setValue(Helper.getQuantitySymbolOwner(String.valueOf(21)));
+        cardOwner.setValue(Helper.getQuantitySymbolOwner(String.valueOf("?????????? ??????????")));
         validCVC();
         buttonContinue.click();
     }
