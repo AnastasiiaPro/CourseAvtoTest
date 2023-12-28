@@ -108,6 +108,12 @@ public class Helper {
         return randomFirstName.toUpperCase() + " " + randomLastName.toUpperCase();
     }
 
+    public static String getEnOwnerLow() {
+        var randomFirstName = fakerEn.name().firstName();
+        var randomLastName = fakerEn.name().lastName();
+        return randomFirstName.toLowerCase() + " " + randomLastName.toLowerCase();
+    }
+
     public static String getOneWordOwner() {
         return fakerRu.name().firstName().toUpperCase();
     }

@@ -180,4 +180,21 @@ public class ApiTest {
         assertEquals(0, credit.size());
         assertEquals(0, order.size());
     }
+
+    @Test
+    public void shouldErrorPaymentCardEmptyForm() {
+        given()
+                .spec(requestSpec)
+                .body(Api.getApiEmptyFormCard())
+                .when()
+                .post("/api/v1/pay")
+                .then()
+                .statusCode(500);
+        payment = getPayments();
+        credit = SQL.getCreditsRequest();
+        order = SQL.getOrders();
+        assertEquals(0, payment.size());
+        assertEquals(0, credit.size());
+        assertEquals(0, order.size());
+    }
 }

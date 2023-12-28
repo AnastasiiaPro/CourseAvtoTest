@@ -46,4 +46,9 @@ public class Api {
         return new api(Helper.getApprovedNumber(), Helper.getMonth(), Helper.getYear(), Helper.getEnOwner(),
                 Helper.getEmptyCVC());
     }
+
+    public static api getApiEmptyFormCard() {
+        return new api(Helper.getEmptyNumber(), Helper.getEmptyMonth(), Helper.getEmptyYear(), Helper.getEmptyOwner(),
+                Helper.getEmptyCVC());
+    }
 }

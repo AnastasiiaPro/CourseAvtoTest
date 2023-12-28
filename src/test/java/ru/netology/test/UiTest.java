@@ -118,6 +118,23 @@ public class UiTest {
     }
 
     @Test
+    @DisplayName("Empty form card ")
+    public void shouldErrorEmptyForm() {
+        long initialNumberPayment = numberFromPayment();
+        var card = choicePaymentCard();
+        card.emptyForm();
+        sendingRequest.shouldNotBe(Condition.visible);
+        errorEmptyFieldNumber.shouldBe(Condition.visible);
+        errorEmptyFieldMonth.shouldBe(Condition.visible);
+        errorEmptyFieldYear.shouldBe(Condition.visible);
+        errorEmptyFieldOwner.shouldBe(Condition.visible);
+        errorEmptyFieldCVC.shouldBe(Condition.visible);
+        notPositiveMessage();
+        notDenialMessage();
+        checkNumberPayment(initialNumberPayment, 0);
+    }
+
+    @Test
     @DisplayName("Empty card number")
     public void shouldErrorEmptyNumber() {
         long initialNumberPayment = numberFromPayment();
@@ -316,6 +333,19 @@ public class UiTest {
         long initialNumberPayment = numberFromPayment();
         var card = choicePaymentCard();
         card.cyrillicLettersOwner();
+        sendingRequest.shouldNotBe(Condition.visible);
+        errorFormat.shouldBe(Condition.visible);
+        notPositiveMessage();
+        notDenialMessage();
+        checkNumberPayment(initialNumberPayment, 0);
+    }
+
+    @Test
+    @DisplayName("Lower letters owner")
+    public void shouldErrorLowLettersInOwnerField() {
+        long initialNumberPayment = numberFromPayment();
+        var card = choicePaymentCard();
+        card.lowerLettersOwner();
         sendingRequest.shouldNotBe(Condition.visible);
         errorFormat.shouldBe(Condition.visible);
         notPositiveMessage();

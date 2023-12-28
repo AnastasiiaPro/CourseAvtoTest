@@ -59,6 +59,10 @@ public class PaymentCard {
         buttonContinue.click();
     }
 
+    public void emptyForm() {
+        buttonContinue.click();
+    }
+
     public void emptyNumber() {
         validMonth();
         validYear();
@@ -213,6 +217,15 @@ public class PaymentCard {
         validMonth();
         validYear();
         cardOwner.setValue(Helper.getCyrillicOwner());
+        validCVC();
+        buttonContinue.click();
+    }
+
+    public void lowerLettersOwner() {
+        validNumber();
+        validMonth();
+        validYear();
+        cardOwner.setValue(Helper.getEnOwnerLow());
         validCVC();
         buttonContinue.click();
     }
