@@ -2,10 +2,7 @@ package ru.netology.test;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
-import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.filter.log.LogDetail;
-import io.restassured.http.ContentType;
-import io.restassured.specification.RequestSpecification;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -41,18 +38,10 @@ public class ApiTest {
         SQL.clear();
     }
 
-    private RequestSpecification requestSpec = new RequestSpecBuilder()
-            .setBaseUri("http://localhost")
-            .setPort(8080)
-            .setAccept(ContentType.JSON)
-            .setContentType(ContentType.JSON)
-            .log(LogDetail.ALL)
-            .build();
-
     @Test
     public void shouldApprovedPaymentCard() {
         String status = given()
-                .spec(requestSpec)
+                .spec(Helper.requestSpec)
                 .body(Helper.getApiApprovedCard())
                 .when()
                 .post("/api/v1/pay")
@@ -75,7 +64,7 @@ public class ApiTest {
     @Test
     public void shouldDeclinedPaymentCard() {
         String status = given()
-                .spec(requestSpec)
+                .spec(Helper.requestSpec)
                 .body(Helper.getApiDeclinedCard())
                 .when()
                 .post("/api/v1/pay")
@@ -99,7 +88,7 @@ public class ApiTest {
     @Test
     public void shouldErrorPaymentCardEmptyNumber() {
         given()
-                .spec(requestSpec)
+                .spec(Helper.requestSpec)
                 .body(Helper.getApiEmptyNumberCard())
                 .when()
                 .post("/api/v1/pay")
@@ -116,7 +105,7 @@ public class ApiTest {
     @Test
     public void shouldErrorPaymentCardEmptyMonth() {
         given()
-                .spec(requestSpec)
+                .spec(Helper.requestSpec)
                 .body(Helper.getApiEmptyMonthCard())
                 .when()
                 .post("/api/v1/pay")
@@ -133,7 +122,7 @@ public class ApiTest {
     @Test
     public void shouldErrorPaymentCardEmptyYear() {
         given()
-                .spec(requestSpec)
+                .spec(Helper.requestSpec)
                 .body(Helper.getApiEmptyYearCard())
                 .when()
                 .post("/api/v1/pay")
@@ -150,7 +139,7 @@ public class ApiTest {
     @Test
     public void shouldErrorPaymentCardEmptyOwner() {
         given()
-                .spec(requestSpec)
+                .spec(Helper.requestSpec)
                 .body(Helper.getApiEmptyOwnerCard())
                 .when()
                 .post("/api/v1/pay")
@@ -167,7 +156,7 @@ public class ApiTest {
     @Test
     public void shouldErrorPaymentCardEmptyCVC() {
         given()
-                .spec(requestSpec)
+                .spec(Helper.requestSpec)
                 .body(Helper.getApiEmptyCVCCard())
                 .when()
                 .post("/api/v1/pay")
@@ -184,7 +173,7 @@ public class ApiTest {
     @Test
     public void shouldErrorPaymentCardEmptyForm() {
         given()
-                .spec(requestSpec)
+                .spec(Helper.requestSpec)
                 .body(Helper.getApiEmptyFormCard())
                 .when()
                 .post("/api/v1/pay")
