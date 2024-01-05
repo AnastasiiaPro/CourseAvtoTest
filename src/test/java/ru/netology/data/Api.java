@@ -4,7 +4,7 @@ import lombok.Value;
 
 public class Api {
     @Value
-    public static class api {
+    public static class Options {
         String number;
         String month;
         String year;
@@ -12,43 +12,43 @@ public class Api {
         String cvc;
     }
 
-    public static api getApiApprovedCard() {
-        return new api(Helper.getApprovedNumber(), Helper.getMonth(), Helper.getYear(), Helper.getEnOwner(),
+    public static Options getApiApprovedCard() {
+        return new Options(Helper.getApprovedNumber(), Helper.getMonth(), Helper.getYear(), Helper.getEnOwner(),
                 Helper.getCVC());
     }
 
-    public static api getApiDeclinedCard() {
-        return new api(Helper.getDeclinedNumber(), Helper.getMonth(), Helper.getYear(), Helper.getEnOwner(),
+    public static Options getApiDeclinedCard() {
+        return new Options(Helper.getDeclinedNumber(), Helper.getMonth(), Helper.getYear(), Helper.getEnOwner(),
                 Helper.getCVC());
     }
 
-    public static api getApiEmptyNumberCard() {
-        return new api(Helper.getEmptyNumber(), Helper.getMonth(), Helper.getYear(), Helper.getEnOwner(),
+    public static Options getApiEmptyNumberCard() {
+        return new Options(Helper.getEmptyNumber(), Helper.getMonth(), Helper.getYear(), Helper.getEnOwner(),
                 Helper.getCVC());
     }
 
-    public static api getApiEmptyMonthCard() {
-        return new api(Helper.getApprovedNumber(), Helper.getEmptyMonth(), Helper.getYear(), Helper.getEnOwner(),
+    public static Options getApiEmptyMonthCard() {
+        return new Options(Helper.getApprovedNumber(), Helper.getEmptyMonth(), Helper.getYear(), Helper.getEnOwner(),
                 Helper.getCVC());
     }
 
-    public static api getApiEmptyYearCard() {
-        return new api(Helper.getApprovedNumber(), Helper.getMonth(), Helper.getEmptyYear(), Helper.getEnOwner(),
+    public static Options getApiEmptyYearCard() {
+        return new Options(Helper.getApprovedNumber(), Helper.getMonth(), Helper.getEmptyYear(), Helper.getEnOwner(),
                 Helper.getCVC());
     }
 
-    public static api getApiEmptyOwnerCard() {
-        return new api(Helper.getApprovedNumber(), Helper.getMonth(), Helper.getYear(), Helper.getEmptyOwner(),
+    public static Options getApiEmptyOwnerCard() {
+        return new Options(Helper.getApprovedNumber(), Helper.getMonth(), Helper.getYear(), Helper.getEmptyOwner(),
                 Helper.getCVC());
     }
 
-    public static api getApiEmptyCVCCard() {
-        return new api(Helper.getApprovedNumber(), Helper.getMonth(), Helper.getYear(), Helper.getEnOwner(),
+    public static Options getApiEmptyCVCCard() {
+        return new Options(Helper.getApprovedNumber(), Helper.getMonth(), Helper.getYear(), Helper.getEnOwner(),
                 Helper.getEmptyCVC());
     }
 
-    public static api getApiEmptyFormCard() {
-        return new api(Helper.getEmptyNumber(), Helper.getEmptyMonth(), Helper.getEmptyYear(), Helper.getEmptyOwner(),
+    public static Options getApiEmptyFormCard() {
+        return new Options(Helper.getEmptyNumber(), Helper.getEmptyMonth(), Helper.getEmptyYear(), Helper.getEmptyOwner(),
                 Helper.getEmptyCVC());
     }
 }
