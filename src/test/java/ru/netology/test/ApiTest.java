@@ -11,7 +11,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 
 import org.junit.jupiter.api.Test;
-import ru.netology.data.Api;
+import ru.netology.data.Helper;
 import ru.netology.data.SQL;
 
 import java.util.List;
@@ -53,7 +53,7 @@ public class ApiTest {
     public void shouldApprovedPaymentCard() {
         String status = given()
                 .spec(requestSpec)
-                .body(Api.getApiApprovedCard())
+                .body(Helper.getApiApprovedCard())
                 .when()
                 .post("/api/v1/pay")
                 .then()
@@ -76,7 +76,7 @@ public class ApiTest {
     public void shouldDeclinedPaymentCard() {
         String status = given()
                 .spec(requestSpec)
-                .body(Api.getApiDeclinedCard())
+                .body(Helper.getApiDeclinedCard())
                 .when()
                 .post("/api/v1/pay")
                 .then()
@@ -100,7 +100,7 @@ public class ApiTest {
     public void shouldErrorPaymentCardEmptyNumber() {
         given()
                 .spec(requestSpec)
-                .body(Api.getApiEmptyNumberCard())
+                .body(Helper.getApiEmptyNumberCard())
                 .when()
                 .post("/api/v1/pay")
                 .then()
@@ -117,7 +117,7 @@ public class ApiTest {
     public void shouldErrorPaymentCardEmptyMonth() {
         given()
                 .spec(requestSpec)
-                .body(Api.getApiEmptyMonthCard())
+                .body(Helper.getApiEmptyMonthCard())
                 .when()
                 .post("/api/v1/pay")
                 .then()
@@ -134,7 +134,7 @@ public class ApiTest {
     public void shouldErrorPaymentCardEmptyYear() {
         given()
                 .spec(requestSpec)
-                .body(Api.getApiEmptyYearCard())
+                .body(Helper.getApiEmptyYearCard())
                 .when()
                 .post("/api/v1/pay")
                 .then()
@@ -151,7 +151,7 @@ public class ApiTest {
     public void shouldErrorPaymentCardEmptyOwner() {
         given()
                 .spec(requestSpec)
-                .body(Api.getApiEmptyOwnerCard())
+                .body(Helper.getApiEmptyOwnerCard())
                 .when()
                 .post("/api/v1/pay")
                 .then()
@@ -168,7 +168,7 @@ public class ApiTest {
     public void shouldErrorPaymentCardEmptyCVC() {
         given()
                 .spec(requestSpec)
-                .body(Api.getApiEmptyCVCCard())
+                .body(Helper.getApiEmptyCVCCard())
                 .when()
                 .post("/api/v1/pay")
                 .then()
@@ -185,7 +185,7 @@ public class ApiTest {
     public void shouldErrorPaymentCardEmptyForm() {
         given()
                 .spec(requestSpec)
-                .body(Api.getApiEmptyFormCard())
+                .body(Helper.getApiEmptyFormCard())
                 .when()
                 .post("/api/v1/pay")
                 .then()

@@ -1,6 +1,6 @@
 package ru.netology.page;
 
-import ru.netology.data.Helper;
+import ru.netology.data.DataHelper;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.SelenideElement;
@@ -22,23 +22,23 @@ public class PaymentCard {
     }
 
     public void validNumber() {
-        cardNumber.setValue(Helper.getApprovedNumber());
+        cardNumber.setValue(DataHelper.getApprovedNumber());
     }
 
     public void validMonth() {
-        cardMonth.setValue(Helper.getMonth());
+        cardMonth.setValue(DataHelper.getMonth());
     }
 
     public void validYear() {
-        cardYear.setValue(Helper.getYear());
+        cardYear.setValue(DataHelper.getYear());
     }
 
     public void validOwner() {
-        cardOwner.setValue(Helper.getEnOwner());
+        cardOwner.setValue(DataHelper.getEnOwner());
     }
 
     public void validCVC() {
-        cardCVC.setValue(Helper.getCVC());
+        cardCVC.setValue(DataHelper.getCVC());
     }
 
     public void approvedNumberCard() {
@@ -51,7 +51,7 @@ public class PaymentCard {
     }
 
     public void declinedNumberCard() {
-        cardNumber.setValue(Helper.getDeclinedNumber());
+        cardNumber.setValue(DataHelper.getDeclinedNumber());
         validMonth();
         validYear();
         validOwner();
@@ -72,7 +72,7 @@ public class PaymentCard {
     }
 
     public void randomNumber() {
-        cardNumber.setValue(Helper.getRandomNumber());
+        cardNumber.setValue(DataHelper.getRandomNumber());
         validMonth();
         validYear();
         validOwner();
@@ -81,7 +81,7 @@ public class PaymentCard {
     }
 
     public void zeroNumber() {
-        cardNumber.setValue(Helper.getZeroNumber());
+        cardNumber.setValue(DataHelper.getZeroNumber());
         validMonth();
         validYear();
         validOwner();
@@ -90,7 +90,7 @@ public class PaymentCard {
     }
 
     public void oneDigitNumber() {
-        cardNumber.setValue(Helper.getRandomOneDigitsNumber());
+        cardNumber.setValue(DataHelper.getRandomOneDigitsNumber());
         validMonth();
         validYear();
         validOwner();
@@ -99,7 +99,7 @@ public class PaymentCard {
     }
 
     public void fifteenDigitsNumber() {
-        cardNumber.setValue(Helper.getRandomFifteenNumber());
+        cardNumber.setValue(DataHelper.getRandomFifteenNumber());
         validMonth();
         validYear();
         validOwner();
@@ -117,7 +117,7 @@ public class PaymentCard {
 
     public void zeroMonth() {
         validNumber();
-        cardMonth.setValue(Helper.getZeroMonth());
+        cardMonth.setValue(DataHelper.getZeroMonth());
         validYear();
         validOwner();
         validCVC();
@@ -126,7 +126,7 @@ public class PaymentCard {
 
     public void thirteenthMonth() {
         validNumber();
-        cardMonth.setValue(Helper.getThirteenMonth());
+        cardMonth.setValue(DataHelper.getThirteenMonth());
         validYear();
         validOwner();
         validCVC();
@@ -135,7 +135,7 @@ public class PaymentCard {
 
     public void oneDigitsNumberMonth() {
         validNumber();
-        cardMonth.setValue(Helper.getRandomOneDigitsNumberMonth());
+        cardMonth.setValue(DataHelper.getRandomOneDigitsNumberMonth());
         validYear();
         validOwner();
         validCVC();
@@ -153,7 +153,7 @@ public class PaymentCard {
     public void yearMoreThanFive() {
         validNumber();
         validMonth();
-        cardYear.setValue(Helper.getMoreThanFiveYear());
+        cardYear.setValue(DataHelper.getMoreThanFiveYear());
         validOwner();
         validCVC();
         buttonContinue.click();
@@ -162,7 +162,7 @@ public class PaymentCard {
     public void pastYear() {
         validNumber();
         validMonth();
-        cardYear.setValue(Helper.getPastYear());
+        cardYear.setValue(DataHelper.getPastYear());
         validOwner();
         validCVC();
         buttonContinue.click();
@@ -171,7 +171,7 @@ public class PaymentCard {
     public void zeroYear() {
         validNumber();
         validMonth();
-        cardYear.setValue(Helper.getZeroYear());
+        cardYear.setValue(DataHelper.getZeroYear());
         validOwner();
         validCVC();
         buttonContinue.click();
@@ -180,7 +180,7 @@ public class PaymentCard {
     public void oneDigitYear() {
         validNumber();
         validMonth();
-        cardYear.setValue(Helper.getRandomOneDigitYear());
+        cardYear.setValue(DataHelper.getRandomOneDigitYear());
         validOwner();
         validCVC();
         buttonContinue.click();
@@ -198,7 +198,7 @@ public class PaymentCard {
         validNumber();
         validMonth();
         validYear();
-        cardOwner.setValue(Helper.getQuantitySymbolOwner(String.valueOf("?????????? ??????????")));
+        cardOwner.setValue(DataHelper.getQuantitySymbolOwner(String.valueOf("?????????? ??????????")));
         validCVC();
         buttonContinue.click();
     }
@@ -207,7 +207,7 @@ public class PaymentCard {
         validNumber();
         validMonth();
         validYear();
-        cardOwner.setValue(Helper.getOneWordOwner());
+        cardOwner.setValue(DataHelper.getOneWordOwner());
         validCVC();
         buttonContinue.click();
     }
@@ -216,7 +216,7 @@ public class PaymentCard {
         validNumber();
         validMonth();
         validYear();
-        cardOwner.setValue(Helper.getCyrillicOwner());
+        cardOwner.setValue(DataHelper.getCyrillicOwner());
         validCVC();
         buttonContinue.click();
     }
@@ -225,7 +225,7 @@ public class PaymentCard {
         validNumber();
         validMonth();
         validYear();
-        cardOwner.setValue(Helper.getEnOwnerLow());
+        cardOwner.setValue(DataHelper.getEnOwnerLow());
         validCVC();
         buttonContinue.click();
     }
@@ -234,7 +234,7 @@ public class PaymentCard {
         validNumber();
         validMonth();
         validYear();
-        cardOwner.setValue(Helper.getNumbersOwner());
+        cardOwner.setValue(DataHelper.getNumbersOwner());
         validCVC();
         buttonContinue.click();
     }
@@ -243,7 +243,7 @@ public class PaymentCard {
         validNumber();
         validMonth();
         validYear();
-        cardOwner.setValue(Helper.getSymbolOwner());
+        cardOwner.setValue(DataHelper.getSymbolOwner());
         validCVC();
         buttonContinue.click();
     }
@@ -261,7 +261,7 @@ public class PaymentCard {
         validMonth();
         validYear();
         validOwner();
-        cardCVC.setValue(Helper.getOneSymbolCVC());
+        cardCVC.setValue(DataHelper.getOneSymbolCVC());
         buttonContinue.click();
     }
 
@@ -270,7 +270,7 @@ public class PaymentCard {
         validMonth();
         validYear();
         validOwner();
-        cardCVC.setValue(Helper.getTwoSymbolsCVC());
+        cardCVC.setValue(DataHelper.getTwoSymbolsCVC());
         buttonContinue.click();
     }
 
@@ -279,7 +279,7 @@ public class PaymentCard {
         validMonth();
         validYear();
         validOwner();
-        cardCVC.setValue(Helper.getZeroCVC());
+        cardCVC.setValue(DataHelper.getZeroCVC());
         buttonContinue.click();
     }
 }
