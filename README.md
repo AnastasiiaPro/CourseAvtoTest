@@ -14,7 +14,7 @@
 
 ### Подключение SUT к MySQL
 1. В терминале 1 в корне проекта запустить контейнеры: `docker-compose up -d`
-2. В терминале 2 запустить приложение: `java -jar ./artifacts/aqa-shop.jar --P:jdbc.url=jdbc:mysql://localhost:3306/app`
+2. В терминале 2 запустить приложение: `java -jar ./artifacts/aqa-shop.jar -D db.url`
 3. Проверить, что приложение успешно запустилось (ввести URL в браузере Сhrome: `http://localhost/8080`)
 4. В терминале 3 запустить тесты: `./gradlew clean test`
 5. Создать отчёт Allure и открыть в браузере `.\gradlew allureserve`
@@ -24,11 +24,10 @@
 
 ### Подключение SUT к PostgreSQL
 1. В терминале 1 в корне проекта запустить контейнеры: `docker-compose up -d`
-2. В терминале 2 запустить приложение: `java -jar .\artifacts\aqa-shop.jar --P:jdbc.url=jdbc:postgresql://localhost:5432/app`
+2. В терминале 2 запустить приложение: `java -jar ./artifacts/aqa-shop.jar -D db.pgurl`
 3. Проверить, что приложение успешно запустилось (ввести URL в браузере Сhrome: `http://localhost/8080`)
-4. В файлах application.properties и build.gradle снять комментарии с `For PostgreSQL`  и закомментировать `For MySQL`
-5. В терминале 3 запустить тесты: `.\gradlew clean test`
-6. Создать отчёт Allure и открыть в браузере `.\gradlew allureserve`
-7. Закрыть отчёт в терминале 3:   `CTRL + C --> y --> Enter`
-8. Остановить приложение в терминале 2: `CTRL + C`
-9. Остановить контейнеры в терминале 1:`docker-compose down`
+4. В терминале 3 запустить тесты: `.\gradlew clean test`
+5. Создать отчёт Allure и открыть в браузере `.\gradlew allureserve`
+6. Закрыть отчёт в терминале 3:   `CTRL + C --> y --> Enter`
+7. Остановить приложение в терминале 2: `CTRL + C`
+8. Остановить контейнеры в терминале 1:`docker-compose down`

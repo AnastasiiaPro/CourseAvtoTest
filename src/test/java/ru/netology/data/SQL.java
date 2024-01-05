@@ -16,6 +16,7 @@ public class SQL {
     public static QueryRunner runner = new QueryRunner();
 
     public static String url = System.getProperty("db.url");
+    public static String pgurl = System.getProperty("db.pgurl");
     public static String user = System.getProperty("db.user");
     public static String password = System.getProperty("db.password");
 
@@ -25,7 +26,7 @@ public class SQL {
         try {
             conn = DriverManager.getConnection(url, user, password);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            conn = DriverManager.getConnection(pgurl, user, password);
         }
         return conn;
     }
