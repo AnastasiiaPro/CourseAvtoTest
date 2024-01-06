@@ -13,24 +13,11 @@ import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.Selenide.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static ru.netology.page.Messages.*;
 
 import java.time.Duration;
 
 public class UiTest {
-
-    private SelenideElement errorSpecifiedPeriodCard = $(Selectors.withText("Неверно указан срок действия карты"));
-    private SelenideElement errorPeriodCard = $(Selectors.withText("Истёк срок действия карты"));
-    private SelenideElement errorEmptyFieldOwner = $(Selectors.withText("Поле обязательно для заполнения"));
-    private SelenideElement errorEmptyFieldNumber = $(Selectors.withText("Поле обязательно для заполнения"));
-    private SelenideElement errorEmptyFieldMonth = $(Selectors.withText("Поле обязательно для заполнения"));
-    private SelenideElement errorEmptyFieldYear = $(Selectors.withText("Поле обязательно для заполнения"));
-    private SelenideElement errorEmptyFieldCVC = $(Selectors.withText("Поле обязательно для заполнения"));
-    private SelenideElement errorFormat = $(Selectors.withText("Неверный формат"));
-    private SelenideElement sendingRequest = $(Selectors.withText("Отправляем запрос в Банк..."));
-    private SelenideElement messageSuccess = $(Selectors.withText("Успешно"));
-    private SelenideElement messageApprove = $(Selectors.withText("Операция одобрена Банком."));
-    private SelenideElement messageError = $(Selectors.withText("Ошибка"));
-    private SelenideElement messageDecline = $(Selectors.withText("Ошибка! Банк отказал в проведении операции."));
 
     @BeforeAll
     static void setup() {
