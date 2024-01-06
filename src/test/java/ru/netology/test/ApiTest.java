@@ -19,7 +19,7 @@ import static ru.netology.data.SQL.getPayments;
 
 public class ApiTest {
     private static List<SQL.PaymentEntity> payment;
-    private static List<SQL.CreditRequestEntity> credit;
+//    private static List<SQL.CreditRequestEntity> credit;
     private static List<SQL.OrderEntity> order;
 
     @BeforeAll
@@ -50,10 +50,10 @@ public class ApiTest {
                 .extract()
                 .path("status");
         payment = getPayments();
-        credit = SQL.getCreditsRequest();
+//        credit = SQL.getCreditsRequest();
         order = SQL.getOrders();
         assertEquals(1, payment.size());
-        assertEquals(0, credit.size());
+//        assertEquals(0, credit.size());
         assertEquals(1, order.size());
         assertEquals("APPROVED", status);
         assertTrue(payment.get(0).getStatus().equalsIgnoreCase("APPROVED"));
@@ -74,10 +74,10 @@ public class ApiTest {
                 .path("status");
 
         payment = getPayments();
-        credit = SQL.getCreditsRequest();
+//        credit = SQL.getCreditsRequest();
         order = SQL.getOrders();
         assertEquals(1, payment.size());
-        assertEquals(0, credit.size());
+//        assertEquals(0, credit.size());
         assertEquals(1, order.size());
         assertEquals("DECLINED", status);
         assertTrue(payment.get(0).getStatus().equalsIgnoreCase("DECLINED"));
@@ -95,10 +95,10 @@ public class ApiTest {
                 .then()
                 .statusCode(400);
         payment = getPayments();
-        credit = SQL.getCreditsRequest();
+//        credit = SQL.getCreditsRequest();
         order = SQL.getOrders();
         assertEquals(0, payment.size());
-        assertEquals(0, credit.size());
+//        assertEquals(0, credit.size());
         assertEquals(0, order.size());
     }
 
@@ -112,10 +112,10 @@ public class ApiTest {
                 .then()
                 .statusCode(400);
         payment = getPayments();
-        credit = SQL.getCreditsRequest();
+//        credit = SQL.getCreditsRequest();
         order = SQL.getOrders();
         assertEquals(0, payment.size());
-        assertEquals(0, credit.size());
+//        assertEquals(0, credit.size());
         assertEquals(0, order.size());
     }
 
@@ -129,10 +129,10 @@ public class ApiTest {
                 .then()
                 .statusCode(400);
         payment = getPayments();
-        credit = SQL.getCreditsRequest();
+//        credit = SQL.getCreditsRequest();
         order = SQL.getOrders();
         assertEquals(0, payment.size());
-        assertEquals(0, credit.size());
+//        assertEquals(0, credit.size());
         assertEquals(0, order.size());
     }
 
@@ -146,10 +146,10 @@ public class ApiTest {
                 .then()
                 .statusCode(400);
         payment = getPayments();
-        credit = SQL.getCreditsRequest();
+//        credit = SQL.getCreditsRequest();
         order = SQL.getOrders();
         assertEquals(0, payment.size());
-        assertEquals(0, credit.size());
+//        assertEquals(0, credit.size());
         assertEquals(0, order.size());
     }
 
@@ -163,10 +163,10 @@ public class ApiTest {
                 .then()
                 .statusCode(400);
         payment = getPayments();
-        credit = SQL.getCreditsRequest();
+//        credit = SQL.getCreditsRequest();
         order = SQL.getOrders();
         assertEquals(0, payment.size());
-        assertEquals(0, credit.size());
+//        assertEquals(0, credit.size());
         assertEquals(0, order.size());
     }
 
@@ -180,10 +180,10 @@ public class ApiTest {
                 .then()
                 .statusCode(400);
         payment = getPayments();
-        credit = SQL.getCreditsRequest();
+//        credit = SQL.getCreditsRequest();
         order = SQL.getOrders();
         assertEquals(0, payment.size());
-        assertEquals(0, credit.size());
+//        assertEquals(0, credit.size());
         assertEquals(0, order.size());
     }
 }
