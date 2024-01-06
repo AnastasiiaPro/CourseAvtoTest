@@ -1,11 +1,15 @@
 package ru.netology.page;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.SelenideElement;
+
+import java.time.Duration;
 
 import static com.codeborne.selenide.Selenide.$;
 
 public class Messages {
+
     public static SelenideElement errorSpecifiedPeriodCard = $(Selectors.withText("Неверно указан срок действия карты"));
     public static SelenideElement errorPeriodCard = $(Selectors.withText("Истёк срок действия карты"));
     public static SelenideElement errorEmptyFieldOwner = $(Selectors.withText("Поле обязательно для заполнения"));
@@ -19,4 +23,24 @@ public class Messages {
     public static SelenideElement messageApprove = $(Selectors.withText("Операция одобрена Банком."));
     public static SelenideElement messageError = $(Selectors.withText("Ошибка"));
     public static SelenideElement messageDecline = $(Selectors.withText("Ошибка! Банк отказал в проведении операции."));
+
+    public static void positiveMessage() {
+        messageSuccess.shouldBe(Condition.visible, Duration.ofSeconds(15));
+        messageApprove.shouldBe(Condition.visible);
+    }
+
+    public static void notPositiveMessage() {
+        messageSuccess.shouldNotBe(Condition.visible, Duration.ofSeconds(15));
+        messageApprove.shouldNotBe(Condition.visible);
+    }
+
+    public static void denialMessage() {
+        messageError.shouldBe(Condition.visible, Duration.ofSeconds(15));
+        messageDecline.shouldBe(Condition.visible);
+    }
+
+    public static void notDenialMessage() {
+        messageError.shouldNotBe(Condition.visible, Duration.ofSeconds(15));
+        messageDecline.shouldNotBe(Condition.visible);
+    }
 }

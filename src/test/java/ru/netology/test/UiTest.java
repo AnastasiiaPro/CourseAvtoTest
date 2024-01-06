@@ -49,26 +49,6 @@ public class UiTest {
         return sql.getStatusPaymentCard();
     }
 
-    public void positiveMessage() {
-        messageSuccess.shouldBe(Condition.visible, Duration.ofSeconds(15));
-        messageApprove.shouldBe(Condition.visible);
-    }
-
-    public void notPositiveMessage() {
-        messageSuccess.shouldNotBe(Condition.visible, Duration.ofSeconds(15));
-        messageApprove.shouldNotBe(Condition.visible);
-    }
-
-    public void denialMessage() {
-        messageError.shouldBe(Condition.visible, Duration.ofSeconds(15));
-        messageDecline.shouldBe(Condition.visible);
-    }
-
-    public void notDenialMessage() {
-        messageError.shouldNotBe(Condition.visible, Duration.ofSeconds(15));
-        messageDecline.shouldNotBe(Condition.visible);
-    }
-
     public void checkNumberPayment(long initialNumberPayment, int x) {
         long finalNumberPayment = numberFromPayment();
         assertEquals(initialNumberPayment + x, finalNumberPayment);
