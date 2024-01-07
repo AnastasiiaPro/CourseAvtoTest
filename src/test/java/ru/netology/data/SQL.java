@@ -42,7 +42,7 @@ public class SQL {
     }
 
     @SneakyThrows
-    public String getStatusPaymentCard() {
+    public static String getStatusPaymentCard() {
         String dataSQL = "SELECT status FROM payment_entity ORDER BY created DESC LIMIT 1";
         String status;
         {
@@ -52,7 +52,7 @@ public class SQL {
     }
 
     @SneakyThrows
-    public long getNumberPaymentCard() {
+    public static long getNumberPaymentCard() {
         String dataSQL = "SELECT COUNT(transaction_id) FROM payment_entity";
         long number = 0;
         {
@@ -61,12 +61,12 @@ public class SQL {
         return number;
     }
 
-    @SneakyThrows
-    public static int getAmount() {
-        String amount = "SELECT amount FROM payment_entity ORDER BY created DESC LIMIT 1;";
-        var amountPay = runner.query(connection(), amount, new ScalarHandler<>()).toString();
-        return Integer.parseInt(amountPay);
-    }
+//    @SneakyThrows
+//    public static int getAmount() {
+//        String amount = "SELECT amount FROM payment_entity ORDER BY created DESC LIMIT 1;";
+//        var amountPay = runner.query(connection(), amount, new ScalarHandler<>()).toString();
+//        return Integer.parseInt(amountPay);
+//    }
 
 
     @Data
@@ -84,23 +84,6 @@ public class SQL {
     public static List<PaymentEntity> getPayments() {
         var dataSQL = "SELECT * FROM payment_entity ORDER BY created DESC;";
         ResultSetHandler<List<PaymentEntity>> resultHandler = new BeanListHandler<>(PaymentEntity.class);
-        return runner.query(connection(), dataSQL, resultHandler);
-    }
-
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class CreditRequestEntity {
-        private String id;
-        private String bank_id;
-        private Timestamp created;
-        private String status;
-    }
-
-    @SneakyThrows
-    public static List<CreditRequestEntity> getCreditsRequest() {
-        var dataSQL = "SELECT * FROM credit_request_entity ORDER BY created DESC;";
-        ResultSetHandler<List<CreditRequestEntity>> resultHandler = new BeanListHandler<>(CreditRequestEntity.class);
         return runner.query(connection(), dataSQL, resultHandler);
     }
 
