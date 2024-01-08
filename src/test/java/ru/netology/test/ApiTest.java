@@ -13,13 +13,11 @@ import ru.netology.data.SQL;
 
 import java.util.List;
 
-import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.*;
 import static ru.netology.data.SQL.getPayments;
 
 public class ApiTest {
     private static List<SQL.PaymentEntity> payment;
-//    private static List<SQL.CreditRequestEntity> credit;
     private static List<SQL.OrderEntity> order;
 
     @BeforeAll
@@ -40,20 +38,10 @@ public class ApiTest {
 
     @Test
     public void shouldApprovedPaymentCard() {
-        String status = given()
-                .spec(Helper.requestSpec)
-                .body(Helper.getApiApprovedCard())
-                .when()
-                .post("/api/v1/pay")
-                .then()
-                .statusCode(200)
-                .extract()
-                .path("status");
+        String status = Helper.performPostRequest("/api/v1/pay", Helper.getApiApprovedCard(), 200);
         payment = getPayments();
-//        credit = SQL.getCreditsRequest();
         order = SQL.getOrders();
         assertEquals(1, payment.size());
-//        assertEquals(0, credit.size());
         assertEquals(1, order.size());
         assertEquals("APPROVED", status);
         assertTrue(payment.get(0).getStatus().equalsIgnoreCase("APPROVED"));
@@ -63,21 +51,10 @@ public class ApiTest {
 
     @Test
     public void shouldDeclinedPaymentCard() {
-        String status = given()
-                .spec(Helper.requestSpec)
-                .body(Helper.getApiDeclinedCard())
-                .when()
-                .post("/api/v1/pay")
-                .then()
-                .statusCode(200)
-                .extract()
-                .path("status");
-
+        String status = Helper.performPostRequest("/api/v1/pay", Helper.getApiDeclinedCard(), 200);
         payment = getPayments();
-//        credit = SQL.getCreditsRequest();
         order = SQL.getOrders();
         assertEquals(1, payment.size());
-//        assertEquals(0, credit.size());
         assertEquals(1, order.size());
         assertEquals("DECLINED", status);
         assertTrue(payment.get(0).getStatus().equalsIgnoreCase("DECLINED"));
@@ -87,103 +64,55 @@ public class ApiTest {
 
     @Test
     public void shouldErrorPaymentCardEmptyNumber() {
-        given()
-                .spec(Helper.requestSpec)
-                .body(Helper.getApiEmptyNumberCard())
-                .when()
-                .post("/api/v1/pay")
-                .then()
-                .statusCode(400);
+        String status = Helper.performPostRequest("/api/v1/pay", Helper.getApiEmptyNumberCard(), 400);
         payment = getPayments();
-//        credit = SQL.getCreditsRequest();
         order = SQL.getOrders();
         assertEquals(0, payment.size());
-//        assertEquals(0, credit.size());
         assertEquals(0, order.size());
     }
 
     @Test
     public void shouldErrorPaymentCardEmptyMonth() {
-        given()
-                .spec(Helper.requestSpec)
-                .body(Helper.getApiEmptyMonthCard())
-                .when()
-                .post("/api/v1/pay")
-                .then()
-                .statusCode(400);
+        String status = Helper.performPostRequest("/api/v1/pay", Helper.getApiEmptyMonthCard(), 400);
         payment = getPayments();
-//        credit = SQL.getCreditsRequest();
         order = SQL.getOrders();
         assertEquals(0, payment.size());
-//        assertEquals(0, credit.size());
         assertEquals(0, order.size());
     }
 
     @Test
     public void shouldErrorPaymentCardEmptyYear() {
-        given()
-                .spec(Helper.requestSpec)
-                .body(Helper.getApiEmptyYearCard())
-                .when()
-                .post("/api/v1/pay")
-                .then()
-                .statusCode(400);
+        String status = Helper.performPostRequest("/api/v1/pay", Helper.getApiEmptyYearCard(), 400);
         payment = getPayments();
-//        credit = SQL.getCreditsRequest();
         order = SQL.getOrders();
         assertEquals(0, payment.size());
-//        assertEquals(0, credit.size());
         assertEquals(0, order.size());
     }
 
     @Test
     public void shouldErrorPaymentCardEmptyOwner() {
-        given()
-                .spec(Helper.requestSpec)
-                .body(Helper.getApiEmptyOwnerCard())
-                .when()
-                .post("/api/v1/pay")
-                .then()
-                .statusCode(400);
+        String status = Helper.performPostRequest("/api/v1/pay", Helper.getApiEmptyOwnerCard(), 400);
         payment = getPayments();
-//        credit = SQL.getCreditsRequest();
         order = SQL.getOrders();
         assertEquals(0, payment.size());
-//        assertEquals(0, credit.size());
         assertEquals(0, order.size());
     }
 
     @Test
     public void shouldErrorPaymentCardEmptyCVC() {
-        given()
-                .spec(Helper.requestSpec)
-                .body(Helper.getApiEmptyCVCCard())
-                .when()
-                .post("/api/v1/pay")
-                .then()
-                .statusCode(400);
+        String status = Helper.performPostRequest("/api/v1/pay", Helper.getApiEmptyCVCCard(), 400);
         payment = getPayments();
-//        credit = SQL.getCreditsRequest();
         order = SQL.getOrders();
         assertEquals(0, payment.size());
-//        assertEquals(0, credit.size());
         assertEquals(0, order.size());
     }
 
     @Test
     public void shouldErrorPaymentCardEmptyForm() {
-        given()
-                .spec(Helper.requestSpec)
-                .body(Helper.getApiEmptyFormCard())
-                .when()
-                .post("/api/v1/pay")
-                .then()
-                .statusCode(400);
+        String status = Helper.performPostRequest("/api/v1/pay", Helper.getApiEmptyFormCard(), 400);
         payment = getPayments();
-//        credit = SQL.getCreditsRequest();
         order = SQL.getOrders();
         assertEquals(0, payment.size());
-//        assertEquals(0, credit.size());
         assertEquals(0, order.size());
     }
 }

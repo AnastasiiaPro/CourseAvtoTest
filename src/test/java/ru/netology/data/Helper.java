@@ -6,6 +6,8 @@ import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import lombok.Value;
 
+import static io.restassured.RestAssured.given;
+
 public class Helper {
 
     @Value
@@ -24,6 +26,19 @@ public class Helper {
             .setContentType(ContentType.JSON)
             .log(LogDetail.ALL)
             .build();
+
+
+    public static String performPostRequest(String endpoint, Object requestBody, int expectedStatusCode) {
+        return given()
+                .spec(Helper.requestSpec)
+                .body(requestBody)
+                .when()
+                .post(endpoint)
+                .then()
+                .statusCode(expectedStatusCode)
+                .extract()
+                .path("status");
+    }
 
     public static Options getApiApprovedCard() {
         return new Options(DataHelper.getApprovedNumber(), DataHelper.getMonth(), DataHelper.getYear(), DataHelper.getEnOwner(),
