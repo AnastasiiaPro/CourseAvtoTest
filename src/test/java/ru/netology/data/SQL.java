@@ -61,14 +61,6 @@ public class SQL {
         return number;
     }
 
-//    @SneakyThrows
-//    public static int getAmount() {
-//        String amount = "SELECT amount FROM payment_entity ORDER BY created DESC LIMIT 1;";
-//        var amountPay = runner.query(connection(), amount, new ScalarHandler<>()).toString();
-//        return Integer.parseInt(amountPay);
-//    }
-
-
     @Data
     @NoArgsConstructor
     @AllArgsConstructor

@@ -45,7 +45,7 @@ public class DataHelper {
         return years;
     }
 
-    public static String getEnOwner() {
+    public static String getOwner() {
         var randomFirstName = fakerEn.name().firstName();
         var randomLastName = fakerEn.name().lastName();
         return randomFirstName.toUpperCase() + " " + randomLastName.toUpperCase();
@@ -88,8 +88,9 @@ public class DataHelper {
     }
 
     public static String getPastYear() {
-        String[] years = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22"};
-        return years[random.nextInt(years.length)];
+        LocalDate date = LocalDate.now().minusYears(1);
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yy");
+        return date.format(format);
     }
 
     public static String getZeroYear() {
@@ -106,8 +107,10 @@ public class DataHelper {
         return faker.numerify("#");
     }
 
-    public static String getQuantitySymbolOwner(String count) {
-        return fakerEn.letterify(count).toUpperCase();
+    public static String getQuantitySymbolOwner() {
+        String randomFirstName = faker.letterify("??????????").toUpperCase();
+        String randomLastName = faker.letterify("??????????").toUpperCase();
+        return randomFirstName + " " + randomLastName;
     }
 
     public static String getSymbolOwner() {
@@ -131,7 +134,7 @@ public class DataHelper {
     }
 
     public static String getOneWordOwner() {
-        return fakerRu.name().firstName().toUpperCase();
+        return fakerEn.name().firstName().toUpperCase();
     }
 
     public static String getOneSymbolCVC() {
