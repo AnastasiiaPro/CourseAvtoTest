@@ -3,7 +3,10 @@ package ru.netology.data;
 import com.github.javafaker.Faker;
 
 import java.time.LocalDate;
+import java.time.Year;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
@@ -26,7 +29,20 @@ public class DataHelper {
     }
 
     public static String getYear() {
-        return valueOf(faker.number().numberBetween(23, 27));
+        List<Integer> years = generateYearList(5);
+        int randomIndex = new Random().nextInt(years.size());
+        int randomYear = years.get(randomIndex) % 100;
+        String formattedYear = String.format("%02d", randomYear);
+        return formattedYear;
+    }
+
+    private static List<Integer> generateYearList(int numYears) {
+        int currentYear = Year.now().getValue();
+        List<Integer> years = new ArrayList<>();
+        for (int i = 0; i <= numYears; i++) {
+            years.add(currentYear + i);
+        }
+        return years;
     }
 
     public static String getEnOwner() {
