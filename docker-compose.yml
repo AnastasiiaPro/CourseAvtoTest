@@ -19,7 +19,6 @@ services:
     volumes:
       - ./data:/var/lib/db
     environment:
-      - POSTGRES_RANDOM_ROOT_PASSWORD=yes
       - POSTGRES_DB=app
       - POSTGRES_USER=tasya
       - POSTGRES_PASSWORD=pass123
